@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1>Welcome to the Inventory Management System</h1>
+    <ul>
+        <li><a href="{% url 'user_list' %}">Manage Users</a></li>
+        <li><a href="{% url 'equipment_list' %}">Manage Equipment</a></li>
+        <li><a href="{% url 'printer_list' %}">Manage Printers</a></li>
+        <li><a href="/admin/">Admin Panel</a></li>
+    </ul>
+</body>
+</html>

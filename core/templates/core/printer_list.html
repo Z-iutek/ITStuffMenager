@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Printer List</title>
+</head>
+<body>
+    <h1>Printer List</h1>
+    <table border="1">
+        <tr>
+            <th>IP Address</th>
+            <th>Hostname</th>
+            <th>Model</th>
+            <th>Serial Number</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+        {% for printer in printers %}
+        <tr>
+            <td>{{ printer.ip_address }}</td>
+            <td>{{ printer.hostname }}</td>
+            <td>{{ printer.model }}</td>
+            <td>{{ printer.serial_number }}</td>
+            <td>{{ printer.status }}</td>
+            <td>
+                <a href="{% url 'edit_printer' printer.pk %}"> Edit</a> |
+                <a href="{% url 'delete_printer' printer.pk %}">Delete</a> |
+                <a href="{% url 'printer_detail' printer.pk %}">Details</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="{% url 'add_printer' %}">Add New Printer</a>
+</body>
+</html>

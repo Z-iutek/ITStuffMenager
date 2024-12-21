@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Printer Detail</title>
+</head>
+<body>
+    <h1>Details for Printer: {{ printer.hostname }} ({{ printer.ip_address }})</h1>
+    <table border="1">
+        <tr><th>IP Address</th><td>{{ printer.ip_address }}</td></tr>
+        <tr><th>Hostname</th><td>{{ printer.hostname }}</td></tr>
+        <tr><th>Model</th><td>{{ printer.model }}</td></tr>
+        <tr><th>Serial Number</th><td>{{ printer.serial_number }}</td></tr>
+        <tr><th>MAC Address</th><td>{{ printer.mac_address }}</td></tr>
+        <tr><th>Status</th><td>{{ printer.status }}</td></tr>
+    </table>
+
+    <h2>SNMP Data</h2>
+    {% if snmp_data %}
+        <ul>
+            {% for key, value in snmp_data.items %}
+                <li><strong>{{ key|capfirst }}:</strong> {{ value }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Aby pobrać dane odnośnie drukarki naciśnij przycisk</p>
+    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Refresh SNMP Data</button>
+    </form>
+    
