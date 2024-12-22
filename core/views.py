@@ -2,7 +2,10 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .forms import PrinterForm
 from .models import Printer, PrinterLog
 from .models import User
+from .models import Equipment
 from .forms import UserForm
+from .forms import EquipmentForm
+
 import subprocess
 
 # View to add a new printer
@@ -111,8 +114,9 @@ def user_list(request):
     users = User.objects.all()
     return render(request, 'core/user_list.html', {'users': users})
 
-def add_user(request):
 
+def add_user(request):
+    
     if request.method == 'POST':
         form = UserForm(request.POST)
         if form.is_valid():
@@ -121,20 +125,21 @@ def add_user(request):
     else:
         form = UserForm()
     return render(request, 'core/add_user.html', {'form': form})
-
 def add_equipment(request):
     if request.method == 'POST':
         form = EquipmentForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('equipment_list')  # Wróć do listy sprzętu po zapisaniu
+            return redirect('equipment_list')
     else:
         form = EquipmentForm()
     return render(request, 'core/add_equipment.html', {'form': form})
 
+
 def equipment_list(request):
     equipment = Equipment.objects.all()
-    return render(request, 'core/equipment_list.html', {'equipment': equipment})
+    return render(request, 'equipment_list.html', {'equipment': equipment})
+
 
 def edit_equipment(request, pk):
     equipment = get_object_or_404(Equipment, pk=pk)
@@ -166,6 +171,11 @@ def edit_user(request, pk):
     return render(request, 'core/edit_user.html', {'form': form})
 
 def delete_user(request, pk):
+    user = get_object_or_404(User, pk=pk)
+    if request.method == 'POST':
+        user.delete()
+        return redirect('user_list')
+    return render(request, 'core/delete_user.html', {'user': user})
     user = get_object_or_404(User, pk=pk)
     if request.method == 'POST':
         user.delete()

@@ -1,0 +1,25 @@
+<h1>Equipment List</h1>
+<table>
+    <tr>
+        <th>Type</th>
+        <th>Model</th>
+        <th>Serial Number</th>
+        <th>Condition</th>
+        <th>Assigned To</th>
+        <th>Actions</th>
+    </tr>
+    {% for item in equipment %}
+    <tr>
+        <td>{{ item.type }}</td>
+        <td>{{ item.model }}</td>
+        <td>{{ item.serial_number }}</td>
+        <td>{{ item.condition }}</td>
+        <td>{{ item.assigned_to.first_name }} {{ item.assigned_to.last_name if item.assigned_to else "Unassigned" }}</td>
+        <td>
+            <a href="{% url 'edit_equipment' item.id %}">Edit</a>
+            <a href="{% url 'delete_equipment' item.id %}">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<a href="{% url 'add_equipment' %}">Add New Equipment</a>

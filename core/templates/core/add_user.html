@@ -1,5 +1,19 @@
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Add User</button>
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add User</title>
+</head>
+<body>
+    <h1>Add New User</h1>
+    <form method="POST" action="{% url 'add_user' %}">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <button type="submit">Add User</button>
+    </form>
+    <a href="{% url 'user_list' %}">Back to User List</a>
+</body>
+</html>

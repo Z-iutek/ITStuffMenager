@@ -11,7 +11,9 @@ class PrinterLogAdmin(admin.ModelAdmin):
 
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
-    list_display = ('name', 'email', 'position', 'department')
+    list_display = ('first_name', 'last_name', 'email', 'role')
+    search_fields = ('first_name', 'last_name', 'email')
+    list_filter = ('role',)
 
 @admin.register(Equipment)
 class EquipmentAdmin(admin.ModelAdmin):

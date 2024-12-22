@@ -55,8 +55,8 @@ ROOT_URLCONF = 'printer_management.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
+        'DIRS': [],  # Możesz tu dodać dodatkowe ścieżki, jeśli potrzebujesz
+        'APP_DIRS': True,  # To pozwala Django szukać w katalogach aplikacji
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',

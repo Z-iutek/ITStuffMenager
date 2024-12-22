@@ -11,9 +11,9 @@ class PrinterForm(forms.ModelForm):
 class EquipmentForm(forms.ModelForm):
     class Meta:
         model = Equipment
-        fields = ['type', 'model', 'serial_number', 'condition', 'assigned_to', 'assigned_date', 'return_date', 'notes']
+        fields = ['type', 'model', 'serial_number', 'condition', 'assigned_to']
 
 class UserForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ['name', 'email', 'position', 'department']  # Dopasowane do modelu User
+        fields = ['first_name', 'last_name', 'email', 'role']  # Dopasowane do modelu User
