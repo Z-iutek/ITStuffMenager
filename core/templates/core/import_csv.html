@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block title %}Import CSV{% endblock %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Import CSV File</title>
+</head>
+<body>
+    <h1>Import CSV File</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <!-- Pole do wyboru pliku -->
+        <label for="csv_file">Choose a CSV file:</label>
+        <input type="file" id="csv_file" name="csv_file" accept=".csv" required>
+        
+        <!-- Przyciski do wyboru tabeli -->
+        <h2>Select the table to import into:</h2>
+        <input type="radio" id="equipment" name="table_name" value="equipment" required>
+        <label for="equipment">Equipment</label><br>
+        
+        <input type="radio" id="user" name="table_name" value="user" required>
+        <label for="user">User</label><br>
+        
+        <input type="radio" id="printer" name="table_name" value="printer" required>
+        <label for="printer">Printer</label><br>
+        
+        <!-- Pole do wyboru separatora -->
+        <h2>Select CSV delimiter:</h2>
+        <select name="delimiter" required>
+            <option value=";">Semicolon (;)</option>
+            <option value=",">Comma (,)</option>
+            <option value="|">Pipe (|)</option>
+            <option value="\\t">Tab</option>
+        </select>
+        
+        <!-- Przycisk wysyłania -->
+        <button type="submit">Upload</button>
+    </form>
+    
+    <h2>Download Templates</h2>
+    <ul>
+        <li><a href="{% url 'download_template' 'equipment' %}">Equipment Template</a></li>
+        <li><a href="{% url 'download_template' 'user' %}">User Template</a></li>
+        <li><a href="{% url 'download_template' 'printer' %}">Printer Template</a></li>
+    </ul>
+    
+    <a href="{% url 'index' %}">Back to Home</a>
+</body>
+</html>
+
+{% endblock %}

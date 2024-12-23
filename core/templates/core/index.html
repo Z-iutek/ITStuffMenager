@@ -3,15 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Projekt IT Manager</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        header {
+            position: sticky;
+            top: 0;
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+        nav {
+            display: flex;
+            gap: 15px;
+        }
+        nav a {
+            text-decoration: none;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        nav a:hover {
+            background-color: #555;
+        }
+        main {
+            padding: 20px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to the Inventory Management System</h1>
-    <ul>
-        <li><a href="{% url 'user_list' %}">Manage Users</a></li>
-        <li><a href="{% url 'equipment_list' %}">Manage Equipment</a></li>
-        <li><a href="{% url 'printer_list' %}">Manage Printers</a></li>
-        <li><a href="/admin/">Admin Panel</a></li>
-    </ul>
+    <header>
+        <div class="logo">IT Manager</div>
+        <nav>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projekt IT Manager</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        header {
+            position: sticky;
+            top: 0;
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+        nav {
+            display: flex;
+            gap: 15px;
+        }
+        nav a {
+            text-decoration: none;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        nav a:hover {
+            background-color: #555;
+        }
+        main {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">IT Manager</div>
+        <nav>
+            <a href="{% url 'user_list' %}">Manage Users</a>
+            <a href="{% url 'equipment_list' %}">Manage Equipment</a>
+            <a href="{% url 'printer_list' %}">Manage Printers</a>
+            <a href="/admin/">Admin Panel</a>
+        </nav>
+    </header>
+    <main>
+        <h1>Welcome to IT Manager</h1>
+        <p>Here is where your content will go...</p>
+    </main>
+</body>
+</html>
+
+        </nav>
+    </header>
+    <main>
+        <h1>Welcome to IT Manager</h1>
+        <p>Here is where your content will go...</p>
+    </main>
 </body>
 </html>

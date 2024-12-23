@@ -1,3 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}Printer List{% endblock %}
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'core/css/tables.css' %}">
+{% endblock %}
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,3 +41,4 @@
     <a href="{% url 'add_printer' %}">Add New Printer</a>
 </body>
 </html>
+{% endblock %}

@@ -21,18 +21,14 @@ class PrinterLog(models.Model):
     scans = models.IntegerField(null=True, blank=True)
 
 
-class User(models.Model):
-    first_name = models.CharField(max_length=50, default="Unknown")
-    last_name = models.CharField(max_length=50, default="Unknown")
+class Employee(models.Model):
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
     email = models.EmailField(unique=True)
-    ROLE_CHOICES = [
-        ('Admin', 'Admin'),
-        ('Employee', 'Employee'),
-    ]
-    role = models.CharField(max_length=20, choices=ROLE_CHOICES)
+    role = models.CharField(max_length=50, choices=[('Admin', 'Admin'), ('Employee', 'Employee')])
 
     def __str__(self):
-        return f"{self.first_name} {self.last_name} ({self.role})"
+        return f"{self.first_name} {self.last_name}"
 
 
 class Equipment(models.Model):

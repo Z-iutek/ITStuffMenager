@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %}User List{% endblock %}
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'core/css/tables.css' %}">
+{% endblock %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee List</title>
+</head>
+<body>
+    <h1>Employee List</h1>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+        {% for employee in employees %}
+        <tr>
+            <td>{{ employee.id }}</td>
+            <td>{{ employee.first_name }}</td>
+            <td>{{ employee.last_name }}</td>
+            <td>{{ employee.email }}</td>
+            <td>{{ employee.role }}</td>
+            <td>
+                <a href="{% url 'edit_employee' employee.id %}">Edit</a>
+                <a href="{% url 'delete_employee' employee.id %}">Delete</a>
+            </td>
+        </tr>
+    </table>
+    <a href="{% url 'add_user' %}">Add New Employee</a>
+</body>
+</html>
+
+{% endblock %}

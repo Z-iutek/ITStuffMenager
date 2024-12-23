@@ -1,3 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}Equipment List{% endblock %}
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'core/css/tables.css' %}">
+{% endblock %}
+{% block content %}
+
 <h1>Equipment List</h1>
 <table>
     <tr>
@@ -14,7 +22,11 @@
         <td>{{ item.model }}</td>
         <td>{{ item.serial_number }}</td>
         <td>{{ item.condition }}</td>
-        <td>{{ item.assigned_to.first_name }} {{ item.assigned_to.last_name if item.assigned_to else "Unassigned" }}</td>
+        <td>{% if item.assigned_to %}
+            {{ item.assigned_to.first_name }} {{ item.assigned_to.last_name }}
+        {% else %}
+            Unassigned
+        {% endif %}</td>
         <td>
             <a href="{% url 'edit_equipment' item.id %}">Edit</a>
             <a href="{% url 'delete_equipment' item.id %}">Delete</a>
@@ -23,3 +35,4 @@
     {% endfor %}
 </table>
 <a href="{% url 'add_equipment' %}">Add New Equipment</a>
+{% endblock %}

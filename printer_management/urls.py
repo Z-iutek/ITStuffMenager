@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.urls import path
+from core import views
 from core.views import (
     add_printer, 
     printer_list, 
@@ -14,7 +15,8 @@ from core.views import (
     add_user, 
     edit_user, 
     delete_user,
-    index
+    index,
+    download_template
 )
 
 urlpatterns = [
@@ -41,4 +43,7 @@ urlpatterns = [
     path('add-user/', add_user, name='add_user'),
     path('edit-user/<int:pk>/', edit_user, name='edit_user'),
     path('delete-user/<int:pk>/', delete_user, name='delete_user'),
+
+    path('import-csv/', views.import_csv, name='import_csv'),
+    path('download-template/<str:model_name>/', download_template, name='download_template'),
 ]
